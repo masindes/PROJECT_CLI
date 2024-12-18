@@ -57,6 +57,14 @@ def update_doctor():
     else:
         print("Doctor with that ID not found.")
 
+
+# delete Doctors details
+
+
+def delete_doctor():
+    doctor_id = int(input("Enter Doctor's ID to delete: "))
+    
+
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
