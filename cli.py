@@ -185,15 +185,15 @@ def main_menu():
         print("9. List all patients under a doctor")
         print("10. Exit")
 
-# Run the database initialization if needed
-if __name__ == "__main__":
-    init_database()  # Uncomment this if you want to initialize the database on first run
+# # Run the database initialization if needed
+# if __name__ == "__main__":
+#     init_database()  # Uncomment this if you want to initialize the database on first run
 
-    # Example usage of the functions:
-    create_doctor()
-    update_doctor()
-    list_doctors()
-    delete_doctor()  
-    update_patient()
-    list_patients()  
-    delete_patient()  
+#     # Example usage of the functions:
+#     create_doctor()
+#     update_doctor()
+#     list_doctors()
+#     delete_doctor()  
+#     update_patient()
+#     list_patients()  
+#     delete_patient()  
