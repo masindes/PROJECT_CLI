@@ -87,7 +87,21 @@ def create_patient():
     email = input("Enter patient email: ")
     adm_number = input("Enter patient admission number: ")
     ward_name = input("Enter patient ward name: ")
-    doctor_id = int(input("Enter patient's doctor id: "))
+    doctor_id = int(input("Enter doctor_id: "))
+    
+    patient = Patient(
+        name=name,
+        age=age,
+        phone_number=phone_number,
+        email=email,
+        adm_number=adm_number,
+        ward_name=ward_name,
+        doctor_id=doctor_id
+    )
+    session.add(patient)
+    session.commit()
+    print(f"Patient '{name}' created successfully with ID: {doctor_id}")
+
 
 # Run the database initialization if needed
 if __name__ == "__main__":
