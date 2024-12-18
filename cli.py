@@ -72,6 +72,14 @@ def delete_doctor():
     else:
         print("Doctor with that ID not found.")
 
+
+# List all doctors
+def list_doctors():
+    doctors = session.query(Doctor).all()
+    for doctor in doctors:
+        print(doctor)
+        print(" ")
+
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
