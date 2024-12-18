@@ -57,15 +57,20 @@ def update_doctor():
     else:
         print("Doctor with that ID not found.")
 
-# Delete doctor details
+# Delete Doctor details
 def delete_doctor():
     doctor_id = int(input("Enter Doctor's ID to delete: "))
     doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
 
     if doctor:
+        # Delete all associated patients before deleting the doctor
+        patients = session.query(Patient).filter(Patient.doctor_id == doctor_id).all()
+        for patient in patients:
+            session.delete(patient)
+        
         session.delete(doctor)
         session.commit()
-        print(f"Doctor with ID {doctor_id} deleted successfully.")
+        print(f"Doctor with ID {doctor_id} and their associated patients have been deleted successfully.")
     else:
         print("Doctor with that ID not found.")
 
@@ -87,9 +92,9 @@ def create_patient():
     email = input("Enter patient email: ")
     adm_number = input("Enter patient admission number: ")
     ward_name = input("Enter patient ward name: ")
-    doctor_id = int(input("Enter doctor ID for this patient: "))
-
-    # Check if the doctor exists
+    doctor_id = int(input("Enter doctor_id: "))
+    
+    # Find the doctor by the doctor_id
     doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
     
     if doctor:
@@ -104,17 +109,16 @@ def create_patient():
         )
         session.add(patient)
         session.commit()
-        print(f"Patient '{name}' created successfully with ID: {patient.id}")
-        return patient
+        print(f"Patient '{name}' created successfully under Doctor '{doctor.name}' with ID: {patient.id}")
     else:
         print(f"Doctor with ID {doctor_id} not found. Patient creation failed.")
 
-# Read patient details
+# Read a patient's details
 def read_patient():
     patient_id = int(input("Enter patient ID to read: "))
     patient = session.query(Patient).filter(Patient.id == patient_id).first()
     if patient:
-        print(f"Patient {patient.name} (ID: {patient.id}) is under Doctor {patient.doctor.name}")
+        print(f"Patient ID: {patient.id}, Name: {patient.name}, Age: {patient.age}, Doctor: {patient.doctor.name}")
     else:
         print("Patient with that ID not found.")
 
@@ -131,31 +135,49 @@ def update_patient():
         patient.email = input(f"Enter new email (current: {patient.email}): ") or patient.email
         patient.adm_number = input(f"Enter new admission number (current: {patient.adm_number}): ") or patient.adm_number
         patient.ward_name = input(f"Enter new ward name (current: {patient.ward_name}): ") or patient.ward_name
-        patient.doctor_id = int(input(f"Enter new doctor ID (current: {patient.doctor_id}): ") or patient.doctor_id)
+        patient.doctor_id = int(input(f"Enter new doctor_id (current: {patient.doctor_id}): ") or patient.doctor_id)
+
         session.commit()
-        print("Patient updated successfully.")
+        print(f"Patient {patient.name} updated successfully!")
     else:
         print("Patient with that ID not found.")
 
-# List all patients
-def list_patients():
-    patients = session.query(Patient).all()
-    if patients:
-        for patient in patients:
-            print(f"ID: {patient.id}, Name: {patient.name}, Age: {patient.age}, Ward: {patient.ward_name}, Doctor: {patient.doctor.name}")
-            print(" ")
+# Delete a patient's details
+def delete_patient():
+    patient_id = int(input("Enter patient ID to delete: "))
+    patient = session.query(Patient).filter(Patient.id == patient_id).first()
+
+    if patient:
+        session.delete(patient)
+        session.commit()
+        print(f"Patient with ID {patient_id} deleted successfully.")
     else:
-        print("No patients found.")
+        print("Patient with that ID not found.")
+
+# List all patients under a doctor
+def list_patients():
+    doctor_id = int(input("Enter Doctor's ID to list patients: "))
+    doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
+
+    if doctor:
+        patients = doctor.patients  # Accessing the patients via the relationship
+        if patients:
+            for patient in patients:
+                print(f"Patient ID: {patient.id}, Name: {patient.name}, Age: {patient.age}, Ward: {patient.ward_name}")
+        else:
+            print(f"No patients found for Doctor {doctor.name}.")
+    else:
+        print("Doctor with that ID not found.")
 
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
 
     # Example usage of the functions:
-    # Create a doctor, then a patient for that doctor
     create_doctor()
     update_doctor()
-    create_patient()
-    update_patient()
     list_doctors()
-    list_patients()
+    delete_doctor()  
+    update_patient()
+    list_patients()  
+    delete_patient()  
