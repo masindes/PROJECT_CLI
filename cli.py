@@ -169,6 +169,22 @@ def list_patients():
     else:
         print("Doctor with that ID not found.")
 
+
+
+def main_menu():
+    while True:
+        print("\nWelcome to Patient Management System,How may I help?")
+        print("1. Add a new Doctor")
+        print("2. Update Doctor details")
+        print("3. Delete Doctor details")
+        print("4. List all doctors")
+        print("5. Add a new Patient")
+        print("6. Read a Patient's details")
+        print("7. Update Patient details")
+        print("8. Delete Patient details")
+        print("9. List all patients under a doctor")
+        print("10. Exit")
+
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
