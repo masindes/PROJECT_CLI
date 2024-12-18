@@ -57,10 +57,7 @@ def update_doctor():
     else:
         print("Doctor with that ID not found.")
 
-
-# delete Doctors details
-
-
+# Delete doctor details
 def delete_doctor():
     doctor_id = int(input("Enter Doctor's ID to delete: "))
     doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
@@ -72,14 +69,17 @@ def delete_doctor():
     else:
         print("Doctor with that ID not found.")
 
-
 # List all doctors
 def list_doctors():
     doctors = session.query(Doctor).all()
-    for doctor in doctors:
-        print(doctor)
-        print(" ")
+    if doctors:
+        for doctor in doctors:
+            print(f"ID: {doctor.id}, Name: {doctor.name}, Age: {doctor.age}, Department: {doctor.department}")
+            print(" ")
+    else:
+        print("No doctors found.")
 
+# Create a new patient
 def create_patient():
     name = input("Enter patient name: ")
     age = int(input("Enter patient age: "))
@@ -87,26 +87,49 @@ def create_patient():
     email = input("Enter patient email: ")
     adm_number = input("Enter patient admission number: ")
     ward_name = input("Enter patient ward name: ")
-    doctor_id = int(input("Enter doctor_id: "))
-    
-    patient = Patient(
-        name=name,
-        age=age,
-        phone_number=phone_number,
-        email=email,
-        adm_number=adm_number,
-        ward_name=ward_name,
-        doctor_id=doctor_id
-    )
-    session.add(patient)
-    session.commit()
-    print(f"Patient '{name}' created successfully with ID: {doctor_id}")
+    doctor_id = int(input("Enter doctor ID for this patient: "))
 
+    # Check if the doctor exists
+    doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
+    
+    if doctor:
+        patient = Patient(
+            name=name,
+            age=age,
+            phone_number=phone_number,
+            email=email,
+            adm_number=adm_number,
+            ward_name=ward_name,
+            doctor_id=doctor.id  # Link to the doctor
+        )
+        session.add(patient)
+        session.commit()
+        print(f"Patient '{name}' created successfully with ID: {patient.id}")
+        return patient
+    else:
+        print(f"Doctor with ID {doctor_id} not found. Patient creation failed.")
+
+# Read patient details
+
+# List all patients
+def list_patients():
+    patients = session.query(Patient).all()
+    if patients:
+        for patient in patients:
+            print(f"ID: {patient.id}, Name: {patient.name}, Age: {patient.age}, Ward: {patient.ward_name}, Doctor: {patient.doctor.name}")
+            print(" ")
+    else:
+        print("No patients found.")
 
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
 
     # Example usage of the functions:
+    # Create a doctor, then a patient for that doctor
     create_doctor()
     update_doctor()
+    create_patient()
+    update_patient()
+    list_doctors()
+    list_patients()
