@@ -63,7 +63,14 @@ def update_doctor():
 
 def delete_doctor():
     doctor_id = int(input("Enter Doctor's ID to delete: "))
-    
+    doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
+
+    if doctor:
+        session.delete(doctor)
+        session.commit()
+        print(f"Doctor with ID {doctor_id} deleted successfully.")
+    else:
+        print("Doctor with that ID not found.")
 
 # Run the database initialization if needed
 if __name__ == "__main__":
