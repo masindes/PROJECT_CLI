@@ -110,6 +110,16 @@ def create_patient():
         print(f"Doctor with ID {doctor_id} not found. Patient creation failed.")
 
 # Read patient details
+def read_patient():
+    patient_id = int(input("Enter patient ID to read: "))
+    patient = session.query(Patient).filter(Patient.id == patient_id).first()
+    if patient:
+        print(f"Patient {patient.name} (ID: {patient.id}) is under Doctor {patient.doctor.name}")
+    else:
+        print("Patient with that ID not found.")
+
+# Update patient details
+
 
 # List all patients
 def list_patients():
