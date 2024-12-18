@@ -185,7 +185,7 @@ def main_menu():
         print("10. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            create_doctor()  # Fixed function name
+            create_doctor()  
         elif choice == "2":
             update_doctor()
         elif choice == "3":
@@ -210,7 +210,7 @@ def main_menu():
 
 # Uncomment and run the database initialization if needed
 if __name__ == "__main__":
-    init_database()  # Uncomment this to initialize the database on first run
-
+    init_database() 
+    
     # Start the main menu
     main_menu()
