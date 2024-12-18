@@ -119,7 +119,23 @@ def read_patient():
         print("Patient with that ID not found.")
 
 # Update patient details
+def update_patient():
+    patient_id = int(input("Enter patient ID to update: "))
+    patient = session.query(Patient).filter(Patient.id == patient_id).first()
 
+    if patient:
+        print(f"Updating details for Patient: {patient.name}")
+        patient.name = input(f"Enter new name (current: {patient.name}): ") or patient.name
+        patient.age = int(input(f"Enter new age (current: {patient.age}): ") or patient.age)
+        patient.phone_number = input(f"Enter new phone number (current: {patient.phone_number}): ") or patient.phone_number
+        patient.email = input(f"Enter new email (current: {patient.email}): ") or patient.email
+        patient.adm_number = input(f"Enter new admission number (current: {patient.adm_number}): ") or patient.adm_number
+        patient.ward_name = input(f"Enter new ward name (current: {patient.ward_name}): ") or patient.ward_name
+        patient.doctor_id = int(input(f"Enter new doctor ID (current: {patient.doctor_id}): ") or patient.doctor_id)
+        session.commit()
+        print("Patient updated successfully.")
+    else:
+        print("Patient with that ID not found.")
 
 # List all patients
 def list_patients():
