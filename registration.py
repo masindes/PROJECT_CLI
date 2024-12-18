@@ -11,7 +11,9 @@ def main():
 @main.command()
 @click.option('firstName', 'fn', required=True)
 @click.option('lastName', 'ln', required=True)
-@click.option('age', 'm', required=True)
+@click.option('age', 'a', required=True)
+@click.option('patientId', 'pi', required=True, default = None)
+@click.option('PhoneNumber', 'pn', required=True, default = None)
 
 
 def add_Patient():
