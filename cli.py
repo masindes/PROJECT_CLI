@@ -169,11 +169,10 @@ def list_patients():
     else:
         print("Doctor with that ID not found.")
 
-
-
+# Main Menu Function
 def main_menu():
     while True:
-        print("\nWelcome to Patient Management System,How may I help?")
+        print("\nWelcome to Patient Management System, How may I help?")
         print("1. Add a new Doctor")
         print("2. Update Doctor details")
         print("3. Delete Doctor details")
@@ -186,7 +185,7 @@ def main_menu():
         print("10. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            add_doctor()
+            create_doctor()  # Fixed function name
         elif choice == "2":
             update_doctor()
         elif choice == "3":
@@ -209,16 +208,9 @@ def main_menu():
         else:
             print("Invalid choice. Please try again.")
 
-            
-# # Run the database initialization if needed
-# if __name__ == "__main__":
-#     init_database()  # Uncomment this if you want to initialize the database on first run
+# Uncomment and run the database initialization if needed
+if __name__ == "__main__":
+    init_database()  # Uncomment this to initialize the database on first run
 
-#     # Example usage of the functions:
-#     create_doctor()
-#     update_doctor()
-#     list_doctors()
-#     delete_doctor()  
-#     update_patient()
-#     list_patients()  
-#     delete_patient()  
+    # Start the main menu
+    main_menu()
