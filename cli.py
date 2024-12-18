@@ -80,6 +80,15 @@ def list_doctors():
         print(doctor)
         print(" ")
 
+def create_patient():
+    name = input("Enter patient name: ")
+    age = int(input("Enter patient age: "))
+    phone_number = input("Enter patient phone number: ")
+    email = input("Enter patient email: ")
+    adm_number = input("Enter patient admission number: ")
+    ward_name = input("Enter patient ward name: ")
+    doctor_id = int(input("Enter patient's doctor id: "))
+
 # Run the database initialization if needed
 if __name__ == "__main__":
     init_database()  # Uncomment this if you want to initialize the database on first run
