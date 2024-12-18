@@ -185,7 +185,31 @@ def main_menu():
         print("9. List all patients under a doctor")
         print("10. Exit")
         choice = input("Enter your choice: ")
+        if choice == "1":
+            add_doctor()
+        elif choice == "2":
+            update_doctor()
+        elif choice == "3":
+            delete_doctor()
+        elif choice == "4":
+            list_doctors()
+        elif choice == "5":
+            create_patient()
+        elif choice == "6":
+            read_patient()
+        elif choice == "7":
+            update_patient()
+        elif choice == "8":
+            delete_patient()
+        elif choice == "9":
+            list_patients()
+        elif choice == "10":
+            print("Thank you for using the Patient Management System. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
+            
 # # Run the database initialization if needed
 # if __name__ == "__main__":
 #     init_database()  # Uncomment this if you want to initialize the database on first run
