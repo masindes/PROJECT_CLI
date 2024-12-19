@@ -166,12 +166,12 @@ def list_patients():
     if doctor:
         patients = doctor.patients  # Accessing the patients via the relationship
         if patients:
-            table_data = [['Patient ID', 'Name', 'Age', 'Ward']]  # Table headers
+            table_data = [['Patient ID', 'Name', 'Age', 'Ward']]  
             for patient in patients:
                 table_data.append([patient.id, patient.name, patient.age, patient.ward_name])
 
-            table = AsciiTable(table_data)  # Create the table
-            print(table.table)  # Print the table
+            table = AsciiTable(table_data)  
+            print(table.table) 
         else:
             print(f"No patients found for Doctor {doctor.name}.")
     else:
@@ -216,7 +216,7 @@ def main_menu():
         else:
             print("Invalid choice. Please try again.")
 
-# Uncomment and run the database initialization if needed
+# Database initialization 
 if __name__ == "__main__":
     init_database() 
     
