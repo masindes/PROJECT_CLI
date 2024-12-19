@@ -1,7 +1,8 @@
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, Doctor, Patient  # Assuming you have a 'models' module
+from models import Base, Doctor, Patient  
+from terminaltables import AsciiTable  
 
 # Database URL
 DATABASE_URL = 'sqlite:///doctors.db'
@@ -74,13 +75,16 @@ def delete_doctor():
     else:
         print("Doctor with that ID not found.")
 
-# List all doctors
+# List all doctors (using terminaltables to format the table)
 def list_doctors():
     doctors = session.query(Doctor).all()
     if doctors:
+        table_data = [['ID', 'Name', 'Age', 'Department']]  # Table headers
         for doctor in doctors:
-            print(f"ID: {doctor.id}, Name: {doctor.name}, Age: {doctor.age}, Department: {doctor.department}")
-            print(" ")
+            table_data.append([doctor.id, doctor.name, doctor.age, doctor.department])
+
+        table = AsciiTable(table_data)  # Create the table
+        print(table.table)  # Print the table
     else:
         print("No doctors found.")
 
@@ -154,7 +158,7 @@ def delete_patient():
     else:
         print("Patient with that ID not found.")
 
-# List all patients under a doctor
+# List all patients under a doctor (using terminaltables to format the table)
 def list_patients():
     doctor_id = int(input("Enter Doctor's ID to list patients: "))
     doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
@@ -162,8 +166,12 @@ def list_patients():
     if doctor:
         patients = doctor.patients  # Accessing the patients via the relationship
         if patients:
+            table_data = [['Patient ID', 'Name', 'Age', 'Ward']]  # Table headers
             for patient in patients:
-                print(f"Patient ID: {patient.id}, Name: {patient.name}, Age: {patient.age}, Ward: {patient.ward_name}")
+                table_data.append([patient.id, patient.name, patient.age, patient.ward_name])
+
+            table = AsciiTable(table_data)  # Create the table
+            print(table.table)  # Print the table
         else:
             print(f"No patients found for Doctor {doctor.name}.")
     else:
