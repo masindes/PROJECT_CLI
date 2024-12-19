@@ -56,20 +56,13 @@ To run the application, follow these steps:
 3. Start the application by running python cli.py
 4. Use the provided commands to interact with the system
 
-# **API Documentation**
-The application uses a mock API for demonstration purposes. The API endpoints are as follows:
--GET /jobs: Returns a list of all jobs
--GET /jobs/:id: Returns a single job by id
--POST /jobs: Creates a new job
--PATCH /jobs/:id: Updates a job
--DELETE /jobs/:id: Deletes a job
 
 # **Installation**
 To install the dependencies, run the following command:
-1 . npm install
+1 . pipenv  install
 # **Usage**
 To start the application, run the following command:
-1 . npm start
+1 . python click.py
 
 
 # **Contribution**
@@ -90,3 +83,5 @@ This project is licensed under MIT
 
 https://github.com/masindes/PROJECT_CLI
 
+
+This README file provides all the necessary information for understanding the system's purpose, installing it, and using it effectively. Let me know if you need additional changes!
