@@ -3,19 +3,20 @@
 Overview
 
 The Patient Management System is a Python-based application that allows users to manage doctors and patients in a healthcare setting. This system interacts with an SQLite database to store doctor and patient information, and provides functionality to add, update, delete, and view details of doctors and patients. It uses SQLAlchemy for ORM (Object Relational Mapping) and terminaltables for displaying data in a tabular format in the terminal.
-# **Project information**
+# **Features**
 
-COMPONENTS:
+1.Doctor Management:
+    Add new doctors
+    Update doctor details
+    Delete doctor details along with their associated patients
+    List all doctors
+1.Patient Management:
+    Add new patients under a specific doctor
+    Read patient details
+    Update patient details
+    Delete patient details
+    List all patients under a specific doctor
 
--Card,hero,HomeCards,JobListings,JobListing,Navbar,Spinner,and the ViewAllJobs.
-
-LAYOUTS:
-
--MainLayout.
-
-PAGES:
-
--HomePage,AddJobPage,EditJobPage,JobPage,App,NotfoundPage and JobsPage 
 # **Features**
 1. Users can view all jobs
 2. Users can view a single job
@@ -23,33 +24,25 @@ PAGES:
 4. Users can edit a job
 5. Users can delete a job
 
-# **Technologies Used**
-1. React
-2. JavaScript
-3. HTML
-4. CSS
+# **Requirements**
+1. Python
+2. SQLite
+3. SQLAlchemy
+4. terminaltables
 
--Context API
-# **Setup**
-To run the application, follow these steps:
-1. Clone the repository
-2. Install the dependencies by running npm install
-3. Start the application by running npm start
-4. Open your browser and navigate to http://localhost:3000
-# **API Documentation**
-The application uses a mock API for demonstration purposes. The API endpoints are as follows:
--GET /jobs: Returns a list of all jobs
--GET /jobs/:id: Returns a single job by id
--POST /jobs: Creates a new job
--PATCH /jobs/:id: Updates a job
--DELETE /jobs/:id: Deletes a job
+
+# **Setup and Installation**
+1.  Clone or Download the repository: Clone this repository to your local machine or download the         patient_management_system.py file.
+2. Database: The application uses SQLite as the database (doctors.db). Upon running the application, the database file and tables will be created automatically.
+3. Run the Application: To start the application, run the Python script:
+    python cli.py
 
 # **Installation**
 To install the dependencies, run the following command:
-1 . npm install
+1 . pipenv install sqlalchemy alembic
 # **Usage**
 To start the application, run the following command:
-1 . npm start
+1 . 
 
 
 # **Contribution**
