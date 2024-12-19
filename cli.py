@@ -164,7 +164,7 @@ def list_patients():
     doctor = session.query(Doctor).filter(Doctor.id == doctor_id).first()
 
     if doctor:
-        patients = doctor.patients  # Accessing the patients via the relationship
+        patients = doctor.patients   # Accessing the patients via the relationship
         if patients:
             table_data = [['Patient ID', 'Name', 'Age', 'Ward']]  
             for patient in patients:
