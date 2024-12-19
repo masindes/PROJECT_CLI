@@ -30,6 +30,21 @@ The Patient Management System is a Python-based application that allows users to
 3. SQLAlchemy
 4. terminaltables
 
+# **Functionality**
+
+1. Doctor Management:
+Add a new Doctor: The user can enter the doctor’s details (name, age, phone number, email, hospital ID, and department) to create a new doctor.
+Update Doctor Details: The user can update a doctor’s information by specifying the doctor’s ID.
+Delete Doctor: The user can delete a doctor’s record by ID. All associated patients will also be deleted.
+List Doctors: Display a list of all doctors in a formatted table showing their ID, name, age, and department.
+2. Patient Management:
+Add a new Patient: The user can create a new patient by providing the patient’s details (name, age, phone number, email, admission number, ward name, and doctor ID).
+Read Patient Details: The user can view details of a specific patient by ID.
+Update Patient Details: The user can update the details of an existing patient.
+Delete Patient: The user can delete a patient’s record by ID.
+List Patients of a Doctor: The user can list all patients under a specific doctor using the doctor’s ID.
+
+
 
 # **Setup and Installation**
 1.  Clone or Download the repository: Clone this repository to your local machine or download the         patient_management_system.py file.
