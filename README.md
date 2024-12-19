@@ -42,26 +42,14 @@ Add a Patient: Creates a new patient and links them to a specific doctor. Requir
 
 Read a Patient's Details: Displays the details of a patient based on their ID.
 
-# **Features**
-1. Users can view all jobs
-2. Users can view a single job
-3. Users can add a new job
-4. Users can edit a job
-5. Users can delete a job
 
-# **Technologies Used**
-1. React
-2. JavaScript
-3. HTML
-4. CSS
-
--Context API
 # **Setup**
 To run the application, follow these steps:
 1. Clone the repository
-2. Install the dependencies by running npm install
-3. Start the application by running npm start
-4. Open your browser and navigate to http://localhost:3000
+2. Install the dependencies by running pipenv install, sqlalchemy alembic 
+3. Start the application by running python cli.py
+4. Use the provided commands to interact with the system
+
 # **API Documentation**
 The application uses a mock API for demonstration purposes. The API endpoints are as follows:
 -GET /jobs: Returns a list of all jobs
