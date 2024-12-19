@@ -42,6 +42,12 @@ Add a Patient: Creates a new patient and links them to a specific doctor. Requir
 
 Read a Patient's Details: Displays the details of a patient based on their ID.
 
+Update a Patient: Updates an existing patient's details by specifying their ID.
+
+Delete a Patient: Deletes a patient based on their ID.
+
+List all Patients under a Doctor: Lists all patients associated with a specific doctor.
+
 
 # **Setup**
 To run the application, follow these steps:
