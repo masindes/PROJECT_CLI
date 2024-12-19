@@ -67,10 +67,15 @@ To start the application, run the following command:
 
 # **Contribution**
 If you have suggestion or find an issue.Feel free to submit a pull request.
+
 I value your feedback here and I will appreciate your contribution!
+
 1.Fork the project
+
 2.Create a new branch
+
 3.commit your changes.
+
 4.push to the branch
 # **Contact**
 [Masinde  Sylvester][masinde.sylvester@yahoo.com]
