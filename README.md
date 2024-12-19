@@ -16,15 +16,32 @@ The User can:
 
 # **Requirements**
 
-Python 3.x
+-Python 3.x
 
-SQLAlchemy
+-SQLAlchemy
 
-terminaltables
+-Terminaltables
 
-sqlite3
+-Sqlite3
 
--HomePage,AddJobPage,EditJobPage,JobPage,App,NotfoundPage and JobsPage 
+# **Functionality**
+
+**Doctor Operations**
+
+Add a Doctor: Creates a new doctor by entering their name, age, phone number, email, hospital ID, and department.
+
+Update a Doctor: Updates an existing doctor's details by specifying their ID.
+
+Delete a Doctor: Deletes a doctor and all associated patients by specifying their ID.
+
+List all Doctors: Displays a list of all doctors in a table format.
+
+**Patient Operations**
+
+Add a Patient: Creates a new patient and links them to a specific doctor. Requires the patient's details and the doctor's ID.
+
+Read a Patient's Details: Displays the details of a patient based on their ID.
+
 # **Features**
 1. Users can view all jobs
 2. Users can view a single job
